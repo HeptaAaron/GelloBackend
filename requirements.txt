@@ -1,0 +1,18 @@
+asgiref==3.11.0
+Django==6.0
+filelock==3.20.0
+fsspec==2025.12.0
+-e git+https://github.com/mattaq31/GelGenie.git@23fae2fb6ab2ade7149f4e7a76248dba7d9d23a9#egg=GelGenie&subdirectory=python-gelgenie
+Jinja2==3.1.6
+MarkupSafe==2.1.5
+mpmath==1.3.0
+networkx==3.6.1
+numpy==2.3.5
+pillow==12.0.0
+setuptools==80.9.0
+sqlparse==0.5.5
+sympy==1.14.0
+torch==2.9.1
+torchvision==0.24.1
+typing_extensions==4.15.0
+wheel==0.45.1

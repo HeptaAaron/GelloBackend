@@ -1,0 +1,35 @@
+# --- venv ---
+.venv/
+venv/
+env/
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# --- Django ---
+db.sqlite3
+db.sqlite3-journal
+*.log
+media/
+staticfiles/
+
+# --- env/secrets ---
+.env
+.env.*
+
+# --- IDE/OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# --- GelGenie ---
+GelGenie/
