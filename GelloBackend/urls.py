@@ -14,7 +14,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from GelloBackend.views.auth_views import LoginView, RegisterView
+from GelloBackend.views.auth_views import LoginView, RegisterView, LogoutView
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -22,5 +22,6 @@ urlpatterns = [
     path('api/auth/login', LoginView.as_view(), name='auth-login'),
     path('api/auth/refresh', TokenRefreshView.as_view(), name='auth-refresh'),
     path('api/auth/register', RegisterView.as_view(), name='auth-register'),
+    path('api/auth/logout', LogoutView.as_view(), name='auth-logout'),
     path('api/auth/', include('django.contrib.auth.urls')),
 ]
