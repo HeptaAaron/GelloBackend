@@ -3,10 +3,12 @@
 import os
 import sys
 
+if sys.version_info < (3, 10) or sys.version_info >= (3, 11):
+    raise RuntimeError("Gell(o) Backend requires Python 3.10.x")
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'GelloBackend.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'DjangoBackend.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
