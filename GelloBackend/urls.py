@@ -18,10 +18,18 @@ from GelloBackend.views.auth_views import LoginView, RegisterView, LogoutView
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenRefreshView
 
+from GelloBackend.views.project_views import ProjectCreateView, ProjectListView, ProjectReadView, ProjectUpdateView, \
+    ProjectDeleteView
+
 urlpatterns = [
     path('api/auth/login', LoginView.as_view(), name='auth-login'),
     path('api/auth/refresh', TokenRefreshView.as_view(), name='auth-refresh'),
     path('api/auth/register', RegisterView.as_view(), name='auth-register'),
     path('api/auth/logout', LogoutView.as_view(), name='auth-logout'),
-    path('api/auth/', include('django.contrib.auth.urls')),
+
+    path('api/project/create', ProjectCreateView.as_view(), name='project-create'),
+    path('api/project', ProjectListView.as_view(), name='project-list'),
+    path('api/project/read/<int:id>', ProjectReadView.as_view(), name='project-read'),
+    path('api/project/update/<int:id>', ProjectUpdateView.as_view(), name='project-update'),
+    path('api/project/delete/<int:id>', ProjectDeleteView.as_view(), name='project-delete'),
 ]

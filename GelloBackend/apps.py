@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class ApiConfig(AppConfig):
-    name = 'gello-backend'
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'GelloBackend'

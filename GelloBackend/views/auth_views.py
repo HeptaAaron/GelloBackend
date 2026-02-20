@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
-from GelloBackend.serializers.auth_serializer import RegisterSerializer
+from GelloBackend.serializers.user.registration_serializer import RegisterSerializer
 
 
 class LoginView(TokenObtainPairView):
