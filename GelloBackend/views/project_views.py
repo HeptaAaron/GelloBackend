@@ -21,16 +21,22 @@ class ProjectCreateView(APIView):
         return Response(ProjectCreateSerializer(project).data, status=status.HTTP_201_CREATED)
 
 class ProjectListView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request):
         qs = Project.objects.filter(owner=request.user).order_by('-created_at')
-        return Response(ProjectListSerializer(qs, many=True).data)
+        return Response(ProjectListSerializer(qs, many=True).data, status=status.HTTP_200_OK)
 
 class ProjectReadView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, id: int):
         project = get_object_or_404(Project, id=id, owner=request.user)
-        return Response(ProjectReadSerializer(project).data)
+        return Response(ProjectReadSerializer(project).data, status=status.HTTP_200_OK)
 
 class ProjectUpdateView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def patch(self, request, id: int):
         project = get_object_or_404(Project, id=id, owner=request.user)
 
@@ -41,6 +47,8 @@ class ProjectUpdateView(APIView):
         return Response(ProjectReadSerializer(project).data, status=status.HTTP_200_OK)
 
 class ProjectDeleteView(APIView):
+    permission_classes = [IsAuthenticated]
+
     def delete(self, request, id: int):
         project = get_object_or_404(Project, id=id, owner=request.user)
         project.delete()
