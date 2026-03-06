@@ -29,7 +29,7 @@ class RegisterView(APIView):
     def post(self, request):
         serializer = RegisterSerializer(data=request.data)
         if serializer.is_valid():
-            user = serializer.save()
+            serializer.save()
             return Response(
                 {"message": "User created successfully"},
                 status=status.HTTP_201_CREATED
@@ -47,3 +47,9 @@ class LogoutView(APIView):
             return Response({"message": "Logged out successfully"}, status=status.HTTP_205_RESET_CONTENT)
         except Exception:
             return Response({"error": "Invalid token"}, status=status.HTTP_400_BAD_REQUEST)
+
+class UserDataView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        return Response({"user": request.user})
