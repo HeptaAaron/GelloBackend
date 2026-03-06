@@ -6,7 +6,7 @@ from GelloBackend.models import Entry
 class EntryUpdateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Entry
-        fields = ["name", "description"]
+        fields = ["name", "content", "type"]
         extra_kwargs = {
             "name": {"required": False},
             "description": {"required": False},
