@@ -1,3 +1,4 @@
+from django.db.models import Count
 from django.shortcuts import get_object_or_404
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
@@ -24,7 +25,8 @@ class ProjectListView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        qs = Project.objects.filter(owner=request.user).order_by('-created_at')
+        qs = Project.objects.filter(owner=request.user).annotate(entry_count=Count("entry")).order_by('-created_at')
+
         return Response(ProjectListSerializer(qs, many=True).data, status=status.HTTP_200_OK)
 
 class ProjectReadView(APIView):

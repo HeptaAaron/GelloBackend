@@ -4,6 +4,8 @@ from GelloBackend.models.project_models import Project
 
 
 class ProjectListSerializer(serializers.ModelSerializer):
+    entry_count = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = Project
-        fields = ["id", "name", "indicatorColor", "created_at", "updated_at"]
+        fields = ["id", "name", "indicatorColor", "entry_count", "created_at", "updated_at"]
