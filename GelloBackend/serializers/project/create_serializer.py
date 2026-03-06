@@ -4,7 +4,7 @@ from GelloBackend.models.project_models import Project
 class ProjectCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
-        fields = ["id", "name", "description", "created_at"]
+        fields = ["id", "name", "description", "indicatorColor", "created_at"]
         read_only_fields = ["id", "created_at"]
 
     def create(self, validated_data):
