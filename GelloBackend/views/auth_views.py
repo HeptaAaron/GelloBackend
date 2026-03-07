@@ -6,6 +6,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework_simplejwt.views import TokenObtainPairView
 
 from GelloBackend.serializers.user.registration_serializer import RegisterSerializer
+from GelloBackend.serializers.user.read_serializer import ReadSerializer
 
 
 class LoginView(TokenObtainPairView):
@@ -52,4 +53,4 @@ class UserDataView(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        return Response({"user": request.user})
+        return Response(ReadSerializer(request.user).data)
