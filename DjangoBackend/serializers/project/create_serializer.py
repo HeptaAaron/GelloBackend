@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from GelloBackend.models.project_models import Project
+from DjangoBackend.models.project_models import Project
 
 class ProjectCreateSerializer(serializers.ModelSerializer):
     class Meta:

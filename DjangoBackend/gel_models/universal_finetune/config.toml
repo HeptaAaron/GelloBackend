@@ -1,0 +1,49 @@
+experiment_name = "unet_dec_21_finetune"
+base_dir = "/exports/csce/eddie/eng/groups/DunnGroup/matthew/models_gelgenie"
+
+[processing]
+base_hardware = "EDDIE"
+device = "GPU"
+pe = 1
+memory = 64
+
+[data]
+n_channels = 1
+batch_size = 2
+num_workers = 1
+val_percent = 10
+dir_train_mask = [ "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/stella_gels/masks",]
+dir_train_img = [ "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/stella_gels/images",]
+dir_val_img = [ "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/matthew_gels_2/val_images", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/nathan_gels/val_images", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/matthew_gels/val_images", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/lsdb_gels/val_images", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/quantitation_ladder_gels/val_images",]
+dir_val_mask = [ "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/matthew_gels_2/val_masks", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/nathan_gels/val_masks", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/matthew_gels/val_masks", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/lsdb_gels/val_masks", "/exports/csce/eddie/eng/groups/DunnGroup/matthew/gel_data/quantitation_ladder_gels/val_masks",]
+split_training_dataset = false
+apply_augmentations = true
+padding = true
+individual_padding = false
+weak_augmentations = true
+minmax_norm = false
+
+[model]
+model_name = "smp_unet"
+classes = 2
+in_channels = 1
+encoder_name = "resnet18"
+
+[training]
+loss = [ "dice", "crossentropy",]
+loss_component_weighting = [ 1, 1,]
+class_loss_weighting = false
+class_loss_weight_damper = [ 1.0, 1.0,]
+lr = 0.0001
+epochs = 600
+grad_scaler = true
+load_checkpoint = 579
+optimizer_type = "adam"
+scheduler_type = false
+save_checkpoint = true
+checkpoint_frequency = 1
+wandb_track = true
+model_cleanup_metric = "Dice Score"
+restart_wandb = true
+model_cleanup_frequency = 20
+wandb_id = "ge3sjpvp"

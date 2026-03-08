@@ -5,11 +5,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from GelloBackend.models.project_models import Project
-from GelloBackend.serializers.project.create_serializer import ProjectCreateSerializer
-from GelloBackend.serializers.project.list_serializer import ProjectListSerializer
-from GelloBackend.serializers.project.read_serializer import ProjectReadSerializer
-from GelloBackend.serializers.project.update_serializer import ProjectUpdateSerializer
+from DjangoBackend.models.project_models import Project
+from DjangoBackend.serializers.project.create_serializer import ProjectCreateSerializer
+from DjangoBackend.serializers.project.list_serializer import ProjectListSerializer
+from DjangoBackend.serializers.project.read_serializer import ProjectReadSerializer
+from DjangoBackend.serializers.project.update_serializer import ProjectUpdateSerializer
 
 
 class ProjectCreateView(APIView):
