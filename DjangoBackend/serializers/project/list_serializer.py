@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
-from GelloBackend.models.project_models import Project
-from GelloBackend.serializers.user.read_serializer import ReadSerializer
+from DjangoBackend.models.project_models import Project
+from DjangoBackend.serializers.user.read_serializer import ReadSerializer
 
 
 class ProjectListSerializer(serializers.ModelSerializer):

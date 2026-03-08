@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from GelloBackend.models import Entry
+from DjangoBackend.models import Entry
 
 
 class EntryUpdateSerializer(serializers.ModelSerializer):

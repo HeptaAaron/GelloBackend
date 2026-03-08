@@ -4,11 +4,11 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from GelloBackend.models import Project, Entry
-from GelloBackend.serializers.entry.create_serializer import EntryCreateSerializer
-from GelloBackend.serializers.entry.list_serializer import EntryListSerializer
-from GelloBackend.serializers.entry.read_serializer import EntryReadSerializer
-from GelloBackend.serializers.entry.update_serializer import EntryUpdateSerializer
+from DjangoBackend.models import Project, Entry
+from DjangoBackend.serializers.entry.create_serializer import EntryCreateSerializer
+from DjangoBackend.serializers.entry.list_serializer import EntryListSerializer
+from DjangoBackend.serializers.entry.read_serializer import EntryReadSerializer
+from DjangoBackend.serializers.entry.update_serializer import EntryUpdateSerializer
 
 
 class EntryCreateView(APIView):

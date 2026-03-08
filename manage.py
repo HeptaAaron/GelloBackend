@@ -3,8 +3,8 @@
 import os
 import sys
 
-if sys.version_info < (3, 10) or sys.version_info >= (3, 11):
-    raise RuntimeError("Gell(o) Backend requires Python 3.10.x")
+if sys.version_info < (3, 12):
+    raise RuntimeError("Gell(o) Backend requires Python 3.12.x")
 
 def main():
     """Run administrative tasks."""

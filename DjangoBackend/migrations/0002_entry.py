@@ -7,7 +7,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('GelloBackend', '0001_initial'),
+        ('DjangoBackend', '0001_initial'),
     ]
 
     operations = [
@@ -20,10 +20,10 @@ class Migration(migrations.Migration):
                 ('type', models.CharField(max_length=200)),
                 ('created_at', models.DateTimeField(auto_now_add=True)),
                 ('updated_at', models.DateTimeField(auto_now=True)),
-                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='GelloBackend.project')),
+                ('project', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='DjangoBackend.project')),
             ],
             options={
-                'indexes': [models.Index(fields=['project', 'created_at'], name='GelloBacken_project_cdca00_idx')],
+                'indexes': [models.Index(fields=['project', 'created_at'], name='DjangoBackend_project_cdca00_idx')],
             },
         ),
     ]

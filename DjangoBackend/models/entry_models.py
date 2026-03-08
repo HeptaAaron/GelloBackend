@@ -1,6 +1,6 @@
 from django.db import models
 
-from GelloBackend.models import Project
+from DjangoBackend.models import Project
 
 
 class Entry(models.Model):

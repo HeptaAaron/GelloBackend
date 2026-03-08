@@ -25,7 +25,7 @@ class Migration(migrations.Migration):
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='projects', to=settings.AUTH_USER_MODEL)),
             ],
             options={
-                'indexes': [models.Index(fields=['owner', 'created_at'], name='GelloBacken_owner_i_9a273d_idx')],
+                'indexes': [models.Index(fields=['owner', 'created_at'], name='DjangoBackend_owner_i_9a273d_idx')],
             },
         ),
     ]
