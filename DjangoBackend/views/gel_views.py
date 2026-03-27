@@ -1,4 +1,3 @@
-from django.http import HttpResponse
 from rest_framework import status
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
@@ -16,24 +15,33 @@ class GelAnalyzeView(APIView):
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
-        image_file = request.FILES.get("image")
+        uploaded_image = request.FILES.get("image")
 
-        if not image_file:
+        if not uploaded_image:
             return Response(
                 {"error": "No image provided"},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
         try:
-            image = gel_image_processor.convert_to_png(image_file)
-            image = gel_image_processor.convert_to_grayscale(image)
+            original_rgb = gel_image_processor.convert_to_png(uploaded_image)
+            grayscale_for_analysis = gel_image_processor.convert_to_grayscale(original_rgb)
 
-            result = self.gel_service.analyze(image)
+            analysis_result = self.gel_service.analyze(original_rgb, grayscale_for_analysis)
 
         except Exception as e:
             return Response(
                 {"error": str(e)},
-                status=status.HTTP_400_BAD_REQUEST
+                status=status.HTTP_400_BAD_REQUEST,
             )
 
-        return HttpResponse(result, content_type="image/png")
+        return Response(
+            {
+                "image": analysis_result["image"],
+                "processed-image": analysis_result["processed_image"],
+                "lane-count": analysis_result["lane_count"],
+                "table-data": analysis_result["table_data"],
+                "note": analysis_result["note"],
+            },
+            status=status.HTTP_200_OK,
+        )
