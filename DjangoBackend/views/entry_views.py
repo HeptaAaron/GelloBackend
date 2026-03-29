@@ -35,13 +35,10 @@ class EntryListView(APIView):
 class EntryReadView(APIView):
     permission_classes = [IsAuthenticated]
 
-    def get(self, request, project_id : int, entry_id : int):
+    def get(self, request, project_id: int, entry_id: int):
         project = get_object_or_404(Project, id=project_id, owner=request.user)
-        if project_id == 1:
-            entry = get_object_or_404(Entry, id=entry_id, project=project)
-            return Response(EntryReadSerializer(entry).data, status=status.HTTP_200_OK)
-        else:
-            return Response(status=status.HTTP_401_UNAUTHORIZED)
+        entry = get_object_or_404(Entry, id=entry_id, project=project)
+        return Response(EntryReadSerializer(entry).data, status=status.HTTP_200_OK)
 
 class EntryUpdateView(APIView):
     permission_classes = [IsAuthenticated]
