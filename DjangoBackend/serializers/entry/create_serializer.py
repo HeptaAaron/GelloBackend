@@ -5,7 +5,7 @@ from DjangoBackend.models import Entry
 class EntryCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Entry
-        fields = ["id", "name", "content", "created_at"]
+        fields = ["id", "name", "type", "content", "created_at"]
         read_only_fields = ["id", "created_at"]
 
     def create(self, validated_data):
