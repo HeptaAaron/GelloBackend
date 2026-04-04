@@ -23,6 +23,7 @@ run:
 	$(PY) manage.py runserver
 
 migrate:
+	$(PY) manage.py makemigrations
 	$(PY) manage.py migrate
 
 shell:
