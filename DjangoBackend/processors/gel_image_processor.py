@@ -1,4 +1,5 @@
-from PIL import Image
+from PIL import Image, ImageOps
+import numpy as np
 
 
 def convert_to_png(image_file):
@@ -8,4 +9,8 @@ def convert_to_png(image_file):
 
 
 def convert_to_grayscale(image):
-    return image.convert("L")
+    grayscale = image.convert("L")
+    mean_brightness = np.mean(np.array(grayscale))
+    if mean_brightness > 128:
+        return ImageOps.invert(grayscale)
+    return grayscale

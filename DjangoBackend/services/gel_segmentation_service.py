@@ -20,6 +20,7 @@ from gelgenie.segmentation.data_handling.dataloaders import ImageDataset
 
 
 LANE_GROUPING_TOLERANCE = 0.05
+MINIMUM_BAND_AREA = 50
 
 
 class GelSegmentationService:
@@ -121,7 +122,12 @@ class GelSegmentationService:
         band_center_x_positions = []
         for band_index in range(1, band_count + 1):
             coords = np.where(band_labels == band_index)
+            if len(coords[0]) < MINIMUM_BAND_AREA:
+                continue
             band_center_x_positions.append((band_index, np.mean(coords[1])))
+
+        if not band_center_x_positions:
+            return []
 
         band_center_x_positions.sort(key=lambda entry: entry[1])
 
